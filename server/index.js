@@ -6,9 +6,12 @@ const password = process.argv[2];
 const mongoURI = `mongodb+srv://joaquinemilianodelvecchio:${password}@cluster0.jrazic8.mongodb.net/fitnessTracker?retryWrites=true&w=majority&appName=Cluster0`;
 const UserModel = require("./models/Users");
 
+const cors = require("cors");
+
 mongoose.connect(mongoURI);
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/getUsers", async (req, res) => {
   try {
